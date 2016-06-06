@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding:0;
+  border:0;
+  /*font-size: inherit;*/
+  font-weight: inherit;
+  font-family: inherit;
+  text-decoration: inherit;
+  line-height: inherit;
+  }
+
+
+body {
+  padding: 50px;
+  background-color: gray;
+  font-family: 'Bree Serif', serif;
+}
+
+h1 {
+  text-align: center;
+  color: lightsalmon;
+}
+
+.controls {
+  padding: 10px;
+  text-align: center;
+}
+
+.reset {
+  font-size: 20px;
+  padding: 3px;
+  display:inline-block;
+  background-color: lightgray;
+  border: 3px solid lightsalmon;
+  border-radius: 5px;
+}
+
+.gameboard {
+  width: 500px;
+  height: 500px;
+  border: 5px solid chartreuse;
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.hidden {
+  border-radius: 10px;
+  background-color: lightsalmon;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  float: left;
+  /*display: none;*/
+}
+
+
+
+.unhidden {
+  background-color: chartreuse;
+  display: block;
+}
