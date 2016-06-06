@@ -14,6 +14,9 @@ body {
   padding: 50px;
   background-color: gray;
   font-family: 'Bree Serif', serif;
+  display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 h1 {
@@ -22,15 +25,17 @@ h1 {
 }
 
 .controls {
-  padding: 10px;
+  width: 300px;
   text-align: center;
+  margin: 0 auto;
+  background-color: white;
+  height: auto;
 }
 
 .reset {
   font-size: 20px;
-  padding: 3px;
   display:inline-block;
-  background-color: lightgray;
+  background-color: gray;
   border: 3px solid lightsalmon;
   border-radius: 5px;
 }
@@ -43,22 +48,31 @@ h1 {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  background-color: green;
 }
 
 
-.hidden {
+.hidden img {
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+div {
   border-radius: 10px;
   background-color: lightsalmon;
   height: 100px;
   width: 100px;
   margin: 10px;
   float: left;
-  /*display: none;*/
+  display: block;
+  border: 1px solid black;
 }
 
-
-
-.unhidden {
-  background-color: chartreuse;
-  display: block;
+div img {
+  height: 100px;
+  width:100px;
+  overflow:hidden;
+  border-radius: 10px;
+  cursor: pointer;
 }
