@@ -1,57 +1,58 @@
-// $(document).ready(function(){
 
-//set up the gameboard with 16 cards
+var deck=[];
+var imagesUsed=[];
+var hidden = $(".hidden");
+
+//sets up the gameboard with sixteen divs
 for(i = 0; i < 16; i++) {
-  $(".gameboard").append('<div class="hidden" class="card"/>');
-
+  $(".gameboard").append('<div class="hidden card"/>');
 }
+
+
+generateDeck();
 
 //assigns an image to each div
 $(".hidden").each(function() {
-
-  // $(this).css("background-image", shuffleDeck); //assigns a random background image per div
   $(this).append(generateBoard);
-
-  // $(this).addClass("hidden");
-  // $(this).addClass("backOfCard");
-  // $(this).removeClass("unhidden");
-  // $(this).removeClass("hidden");
-
 });
 
-var hidden = $(".hidden");
+//generates the deck with two copies of each image
+
+//generates the board
+
+function generateDeck() {
+  for(var i =1; i < 9; i++) {
+  deck.push("images/img"+ i + ".jpg");
+  deck.push("images/img"+ i + ".jpg");
+  }
+  return deck;
+  console.log(deck);
+}
+
+
 
 function generateBoard () {
 
-    var deck = ["images/img1.jpg","images/img2.jpg","images/img3.jpg"];
-    randomNumber = Math.floor(Math.random() * deck.length);
-
-    //this hidden code sets a random image as the BACKGROUND image
-    // imageUrl ="url('"+deck[randomNumber] + "')";
-    // return imageUrl;
-
-    //appending a random image to each div
-    url = deck[randomNumber];
-    imageUrl='<img src="' + url + '"/>'
-    return imageUrl;
-}
+  //appending a random image to each div
+  var randomNumber = Math.floor(Math.random() * deck.length);
+  var url = deck[randomNumber];
+  deck.splice(randomNumber,1);
+  imageUrl='<img src="' + url + '"/>'
+  return imageUrl;
+};
 
 
 
 
 //when card is clicked, the background image is revealed
+var hidden = $(".hidden");
 hidden.on("click", revealCard);
-
 
 function revealCard() {
   console.log("way to go, you clicked a card!")
   $(this).toggleClass("hidden");
+  // compareCards();
 }
-
-
-
-// });
-
 
 
 
