@@ -12,33 +12,39 @@
 body {
   padding: 50px;
   background-color: gray;
-  font-family: 'Bree Serif', serif;
+  font-family: 'raleway', sans-serif;
   display:flex;
   flex-direction:column;
   justify-content:center;
   background-image: url("images/bg.jpg");
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: center;
 }
 
 h1 {
   text-align: center;
+  font-family: raleway;
+  font-weight: normal;
   color: black;
-  font-size: 40px;
-  line-height: 60px;
+  font-size: 60px;
+  letter-spacing: 3px;
+  line-height: 75px;
 }
 
 .controls {
-  width: 300px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0px auto;
+  margin: 15px;
+}
+
+#score {
+margin: 5px;
 }
 
 .gameboard {
-  width: 500px;
-  height: 500px;
+  width: 540px;
+  height: 540px;
   margin: 0 auto;
-  padding: 20px;
   text-align: center;
 }
 
@@ -52,47 +58,57 @@ div {
   text-align: center;
 }
 
+.hidden {
+  background-image: url(images/cardbg.png);
+  opacity: .65;
+}
 .card {
   background-color: lightsalmon;
   border-radius: 10px;
-  height: 100px;
-  width: 100px;
-  margin: 10px;
+  height: 110px;
+  width: 110px;
+  margin: 12px;
   float: left;
   display: block;
+
   /*background-image: url(images/bear.png);*/
-  background-image: stretch;
-  background-size: cover;
+  /*background-image: tile;
+  background-size: cover;*/
 }
 
 .card:hover {
-  transform: rotate(-5deg);
-  transition: ease-in 0.05s ease-out .5s;
+  transform: rotate(-3deg);
+  transition: ease-in 0.03s ease-out .5s;
 }
 
 div img {
-  height: 100px;
-  width:100px;
+  height: 110px;
+  width:110px;
   overflow:hidden;
   border-radius: 10px;
   cursor: pointer;
 }
 
 h2 {
-  font-size: 25px;
-  line-height: 45px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 
 /*/button stuff/*/
 
 .reset {
-  background: #e0937b;
+  /*background: #e0937b;
   background-image: -webkit-linear-gradient(top, #e0937b, lightsalmon);
   background-image: -moz-linear-gradient(top, #e0937b, lightsalmon);
   background-image: -ms-linear-gradient(top, #e0937b, lightsalmon);
   background-image: -o-linear-gradient(top, #e0937b, lightsalmon);
-  background-image: linear-gradient(to bottom, #e0937b, lightsalmon);
+  background-image: linear-gradient(to bottom, #e0937b, lightsalmon);*/
+  background-image: url(images/bg2.png);
+  opacity: .7;
   -webkit-border-radius: 60;
   -moz-border-radius: 60;
   border-radius: 60px;
