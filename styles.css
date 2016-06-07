@@ -2,13 +2,12 @@
   margin: 0;
   padding:0;
   border:0;
-  /*font-size: inherit;*/
+  font-size: inherit;
   font-weight: inherit;
   font-family: inherit;
   text-decoration: inherit;
   line-height: inherit;
 }
-
 
 body {
   padding: 50px;
@@ -25,21 +24,14 @@ body {
 h1 {
   text-align: center;
   color: black;
+  font-size: 40px;
+  line-height: 60px;
 }
 
 .controls {
   width: 300px;
   text-align: center;
   margin: 0 auto;
-  height: auto;
-}
-
-.reset {
-  font-size: 20px;
-  display:inline-block;
-  background-color: chartreuse;
-  border: 3px solid lightsalmon;
-  border-radius: 5px;
 }
 
 .gameboard {
@@ -56,17 +48,26 @@ h1 {
   cursor: pointer;
 }
 
-.card {
-  background-color: lightsalmon;
+div {
+  text-align: center;
 }
 
-div {
+.card {
+  background-color: lightsalmon;
   border-radius: 10px;
   height: 100px;
   width: 100px;
   margin: 10px;
   float: left;
   display: block;
+  /*background-image: url(images/bear.png);*/
+  background-image: stretch;
+  background-size: cover;
+}
+
+.card:hover {
+  transform: rotate(-5deg);
+  transition: ease-in 0.05s ease-out .5s;
 }
 
 div img {
@@ -75,4 +76,41 @@ div img {
   overflow:hidden;
   border-radius: 10px;
   cursor: pointer;
+}
+
+h2 {
+  font-size: 25px;
+  line-height: 45px;
+}
+
+
+/*/button stuff/*/
+
+.reset {
+  background: #e0937b;
+  background-image: -webkit-linear-gradient(top, #e0937b, lightsalmon);
+  background-image: -moz-linear-gradient(top, #e0937b, lightsalmon);
+  background-image: -ms-linear-gradient(top, #e0937b, lightsalmon);
+  background-image: -o-linear-gradient(top, #e0937b, lightsalmon);
+  background-image: linear-gradient(to bottom, #e0937b, lightsalmon);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-size: 25px;
+  padding: 10px 30px 10px 30px;
+  color: black;
+  outline: 0;
+}
+
+.reset:hover {
+  cursor: pointer;
+  background: #f0ac98;
+  background-image: -webkit-linear-gradient(top, #f0ac98, #fcbfae);
+  background-image: -moz-linear-gradient(top, #f0ac98, #fcbfae);
+  background-image: -ms-linear-gradient(top, #f0ac98, #fcbfae);
+  background-image: -o-linear-gradient(top, #f0ac98, #fcbfae);
+  background-image: linear-gradient(to bottom, #f0ac98, #fcbfae);
 }
