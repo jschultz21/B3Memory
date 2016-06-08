@@ -16,9 +16,13 @@ body {
   display:flex;
   flex-direction:column;
   justify-content:center;
-  background-image: url("images/bg.jpg");
+  background-image: url("images0/bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#deckChoice {
+
 }
 
 h1 {
@@ -58,7 +62,7 @@ div {
 }
 
 .hidden {
-  background-image: url(images/cardbg.png);
+  background-image: url(images0/cardbg.png);
   opacity: .65;
 }
 .card {
@@ -70,7 +74,7 @@ div {
   float: left;
   display: block;
 
-  /*background-image: url(images/bear.png);*/
+  /*background-image: url(images0/bear.png);*/
   /*background-image: tile;
   background-size: cover;*/
 }
@@ -106,7 +110,7 @@ h2 {
   background-image: -ms-linear-gradient(top, #e0937b, lightsalmon);
   background-image: -o-linear-gradient(top, #e0937b, lightsalmon);
   background-image: linear-gradient(to bottom, #e0937b, lightsalmon);*/
-  background-image: url(images/cardbg.png);
+  background-image: url(images0/cardbg.png);
   opacity: .7;
   -webkit-border-radius: 60;
   -moz-border-radius: 60;

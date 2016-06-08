@@ -13,14 +13,20 @@ for(i = 0; i < 16; i++) {
   var hidden = $(".hidden");
 }
 
-
 //generates the deck with two copies of each image
 generateDeck(); //calls the generateDeck function
+// 
+// x = userinput
+// values for x:
+// bears = (0=x)
+// numbers = 1
+// letters = 2
 
 function generateDeck() {
   for(var i =1; i < 9; i++) {
-    deck.push("images/img"+ i + ".jpg");
-    deck.push("images/img"+ i + ".jpg");
+  var x=0;
+    deck.push("images"+x+"/img"+ i + ".jpg");
+    deck.push("images"+x+"/img"+ i + ".jpg");
   }
 }
 
