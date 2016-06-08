@@ -8,6 +8,7 @@ var seconds=0;
 var minutes=0;
 var x=0;
 var deckChosen=false;
+var timing=false;
 
 //sets up the gameboard with sixteen divs
 for(i = 0; i < 16; i++) {
@@ -17,22 +18,28 @@ for(i = 0; i < 16; i++) {
 
 //lets user choose a deck before starting
 $(".deckChoice").on("click",function(){
-  deckChosen=true;
-  if ($(".card:contains('img')")) { //if the board contains images, clear them
-    $(".card").children("img").remove(); //removes all images from the .card divs
-    x = $(this).val(); //get value of deck clicked
-    generateDeck();
-  }
-  else { //otherwise, generate the deck
-    deckChosen=true;
-    x = $(this).val();
-    generateDeck();
-  }
 
-  //assigns an image to each div
-  $(".hidden").each(function() {
-    $(this).append(randomCard);
-  });
+  if (timing==true) {
+    alert("game in progress");
+  }
+  else {
+    deckChosen=true;
+    if ($(".card:contains('img')")) { //if the board contains images, clear them
+      $(".card").children("img").remove(); //removes all images from the .card divs
+      x = $(this).val(); //get value of deck clicked
+      generateDeck();
+    }
+    else { //otherwise, generate the deck
+      deckChosen=true;
+      x = $(this).val();
+      generateDeck();
+    }
+
+    //assigns an image to each div
+    $(".hidden").each(function() {
+      $(this).append(randomCard);
+    });
+  }
 });
 
 // //generates the deck with two copies of each image
@@ -52,15 +59,14 @@ function randomCard () {
   return imageUrl;
 };
 
-
 // when a hidden div is clicked, check if the board has images, and check if timer is NOT at 0
 hidden.on("click", function(){
-  if ((deckChosen==true) && (seconds==0)) {
-      startTimer();
-    }
-    else{
-      console.log("timer not starting")
-    }
+  if ((deckChosen==true) && (timing==false)) {
+    startTimer();
+    // gameInProgress=true;
+  }
+  else{
+  }
 });
 
 //when card is clicked, the background image is revealed
@@ -73,7 +79,7 @@ function revealCard() {
     return;
   }
 
-   if ($(this).hasClass("hidden")){
+  if ($(this).hasClass("hidden")){
 
     $(this).toggleClass("hidden selected"); //removes hidden class and adds selected class so image is revealed
     var path = $('img', this).attr('src'); //sets clicked img src to variable 'path'
@@ -105,22 +111,24 @@ function revealCard() {
   }
 }
 
-
 $(".reset").on("click", function(){
   $(".card").children("img").remove(); //removes all images from the .card divs
-  deck=[]; //resets the deck
   generateDeck(); //generates the deck
   $(".card").addClass("hidden");  //resets all .card divs to hidden
   $(".card").removeClass("selected matched");  //resets all .card divs to hidden
   $(".card").append(randomCard); //assigns a random card to each div
   score=0;
   $("h2").html("Total Matches: "+score); //replace the scoreboard with new score
+  deckChosen=false;
+  // gameInProgress=false;
+  timing=false;
   resetTimer();
 });
 
 function doWeHaveaWinner() {
   if (score === 8){
     alert("U WIN GR8 JB!");
+    gameInProgress=false;
   }
   else{
     console.log("no winner yet");
@@ -128,6 +136,7 @@ function doWeHaveaWinner() {
 }
 
 function startTimer(){
+  timing=true;
   timer=setInterval(updateTimer, 1000);
 }
 
@@ -144,5 +153,14 @@ function resetTimer(){
   clearInterval(timer);
   seconds=0;
   $("#timer").text("0m 0s");
-  timing=false;
 }
+
+// $('button').on('click', function(){
+//     $('button').removeClass('selected');
+//     $(this).addClass('selected');
+// });
+
+// $('.reset').on('click', function(){
+//     $('button').removeClass('selected');
+//     $(this).addClass('selected');
+// });
