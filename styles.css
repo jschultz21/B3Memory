@@ -61,7 +61,7 @@ margin: 10px;
 }
 
 .hidden img {
-  opacity: .5;
+  opacity: 0;
   cursor: pointer;
 }
 
@@ -108,7 +108,7 @@ h2 {
 
 /*/button stuff/*/
 
-.reset {
+#reset {
   /*background: #e0937b;
   background-image: -webkit-linear-gradient(top, #e0937b, lightsalmon);
   background-image: -moz-linear-gradient(top, #e0937b, lightsalmon);
@@ -130,7 +130,7 @@ h2 {
   transition:0.2s ease-in-out;
 }
 
-.reset:hover {
+#reset:hover {
   cursor: pointer;
   background: #f0ac98;
   background-image: -webkit-linear-gradient(top, #f0ac98, #fcbfae);
@@ -138,6 +138,14 @@ h2 {
   background-image: -ms-linear-gradient(top, #f0ac98, #fcbfae);
   background-image: -o-linear-gradient(top, #f0ac98, #fcbfae);
   background-image: linear-gradient(to bottom, #f0ac98, #fcbfae);
+}
+
+#reset:Active {
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  background: darksalmon;
+  /*border: solid 1px #000000;*/
 }
 
 
@@ -176,7 +184,7 @@ button:active {
     /*border: solid 1px #000000;*/
 }
 
-.selected{
+.selectedButton{
   -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);

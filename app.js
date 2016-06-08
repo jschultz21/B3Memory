@@ -111,7 +111,7 @@ function revealCard() {
   }
 }
 
-$(".reset").on("click", function(){
+$("#reset").on("click", function(){
   $(".card").children("img").remove(); //removes all images from the .card divs
   generateDeck(); //generates the deck
   $(".card").addClass("hidden");  //resets all .card divs to hidden
@@ -119,7 +119,7 @@ $(".reset").on("click", function(){
   $(".card").append(randomCard); //assigns a random card to each div
   score=0;
   $("h2").html("Total Matches: "+score); //replace the scoreboard with new score
-  deckChosen=false;
+  // deckChosen=false;
   // gameInProgress=false;
   timing=false;
   resetTimer();
@@ -155,12 +155,7 @@ function resetTimer(){
   $("#timer").text("0m 0s");
 }
 
-// $('button').on('click', function(){
-//     $('button').removeClass('selected');
-//     $(this).addClass('selected');
-// });
-
-// $('.reset').on('click', function(){
-//     $('button').removeClass('selected');
-//     $(this).addClass('selected');
-// });
+$('button').on('click', function(){
+    $('button').removeClass('selectedButton');
+    $(this).addClass('selectedButton');
+});
