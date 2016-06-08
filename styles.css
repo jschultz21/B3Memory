@@ -48,7 +48,6 @@ margin: 5px;
   text-align: center;
 }
 
-
 .hidden img {
   opacity: 0;
   cursor: pointer;
@@ -107,7 +106,7 @@ h2 {
   background-image: -ms-linear-gradient(top, #e0937b, lightsalmon);
   background-image: -o-linear-gradient(top, #e0937b, lightsalmon);
   background-image: linear-gradient(to bottom, #e0937b, lightsalmon);*/
-  background-image: url(images/bg2.png);
+  background-image: url(images/cardbg.png);
   opacity: .7;
   -webkit-border-radius: 60;
   -moz-border-radius: 60;
