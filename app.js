@@ -23,6 +23,8 @@ $(".deckChoice").on("click",function(){
     alert("game in progress");
   }
   else {
+    $('button').removeClass('selectedButton');
+    $(this).addClass('selectedButton');
     deckChosen=true;
     if ($(".card:contains('img')")) { //if the board contains images, clear them
       $(".card").children("img").remove(); //removes all images from the .card divs
@@ -154,8 +156,3 @@ function resetTimer(){
   seconds=0;
   $("#timer").text("0m 0s");
 }
-
-$('button').on('click', function(){
-    $('button').removeClass('selectedButton');
-    $(this).addClass('selectedButton');
-});

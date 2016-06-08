@@ -122,7 +122,7 @@ h2 {
   border-radius: 60px;
   -webkit-box-shadow: 0px 1px 3px #666666;
   -moz-box-shadow: 0px 1px 3px #666666;
-  box-shadow: 0px 2px 5px #000000;
+  box-shadow: 0px 2px 3px #666666;
   font-size: 25px;
   padding: 10px 100px 10px 100px;
   color: black;
@@ -163,7 +163,7 @@ button {
   padding: 2px 20px;
   outline: 0;
   margin: 10px;
-  transition:0.2s ease-in-out;
+  /*transition:0.2s ease-in-out;*/
 
 }
 
