@@ -21,6 +21,10 @@ body {
   background-position: center;
 }
 
+button {
+background-color: lemonchiffon;
+}
+
 #deckChoice {
 
 }
