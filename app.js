@@ -22,16 +22,20 @@ for(i = 0; i < 16; i++) {
 }
 
 
+
+
+
 //lets user choose a deck before starting
 $(".deckChoice").on("click",function(){
 
-  if (timing==true) {
+  if (timing==true){
     alert("game in progress");
   }
   else {
     $('button').removeClass('selectedButton');
     $(this).addClass('selectedButton');
     deckChosen=true;
+
     if ($(".card:contains('img')")) { //if the board contains images, clear them
       $(".card").children("img").remove(); //removes all images from the .card divs
       x = $(this).val(); //get value of deck clicked
@@ -42,7 +46,6 @@ $(".deckChoice").on("click",function(){
       x = $(this).val();
       generateDeck();
     }
-
     //assigns an image to each div
     $(".hidden").each(function() {
       $(this).append(randomCard);
@@ -136,6 +139,16 @@ $("#reset").on("click", function(){
 function doWeHaveaWinner() {
   if (score === 8){
     alert("#WINNING");
+
+
+    $(".card").children("img").remove(); //removes all images from the .card divs
+    generateDeck(); //generates the deck
+    $(".card").addClass("hidden");  //resets all .card divs to hidden
+    $(".card").removeClass("selected matched");  //resets all .card divs to hidden
+    $(".card").append(randomCard); //assigns a random card to each div
+    score=0;
+    $("h2").html("Total Matches: "+score); //replace the scoreboard with new score
+
     timing=false;
     resetTimer();
   }
