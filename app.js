@@ -13,6 +13,7 @@ var minutes=0;
 var x=0;
 var deckChosen=false;
 var timing=false;
+var canClickCard = true;
 
 //sets up the gameboard with sixteen divs
 for(i = 0; i < 16; i++) {
@@ -84,7 +85,7 @@ function revealCard() {
     return;
   }
 
-  if ($(this).hasClass("hidden")){
+  if ($(this).hasClass("hidden")&&(canClickCard==true)){
 
     $(this).toggleClass("hidden selected"); //removes hidden class and adds selected class so image is revealed
     var path = $('img', this).attr('src'); //sets clicked img src to variable 'path'
@@ -96,8 +97,8 @@ function revealCard() {
     if (typeof(baseCard) === 'undefined') { //if there is no basecard yet, do nothing after first card is selected
     }
 
-    else { //if the second selected card and the base card match, do these things:
-      if (baseCard === secondCard) {
+    else { //if there IS a baseCard, do these things:
+      if (baseCard === secondCard) { //if the second selected card and the base card match, do these things:
         console.log("hooray!");
         $(this).toggleClass("selected matched");
         $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("matched selected");
@@ -107,10 +108,12 @@ function revealCard() {
       }
 
       else { //if the second selected card and base card do not match, do these things:
+        canClickCard=false;
         setTimeout(function(){
           $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classso the second selected card becomes hidden again
           $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
-        }, 550);
+          canClickCard=true;
+        }, 1000);
       }
       paths=[]; //resets the array
     }
