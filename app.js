@@ -114,7 +114,7 @@ function revealCard() {
         setTimeout(function(){
           $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classso the second selected card becomes hidden again
           $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
-        }, 1000);
+        }, 600);
       }
       paths=[]; //resets the array
     }
@@ -139,6 +139,7 @@ function doWeHaveaWinner() {
   if (score === 8){
     alert("U WIN GR8 JB!");
     gameInProgress=false;
+    resetTimer();
   }
   else{
     console.log("no winner yet");
