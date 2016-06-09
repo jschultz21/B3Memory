@@ -113,7 +113,7 @@ function revealCard() {
           $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classso the second selected card becomes hidden again
           $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
           canClickCard=true;
-        }, 1000);
+        }, 600);
       }
       paths=[]; //resets the array
     }
