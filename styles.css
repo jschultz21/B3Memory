@@ -21,16 +21,14 @@ body {
 }
 
 #deckChoices {
-margin-top: 60px;
-font-size: 25px;
+margin-top: 68px;
+margin-left: 30px;
+font-size: 23px;
 letter-spacing: 2px;
-line-height: 40px;
+line-height: 30px;
 float: left;
-width: 300px;
+width: 240px;
 position: absolute;
-padding: 0 10px;
-/*border-radius: 20px;
-border: 5px solid gray;*/
 }
 
 h1 {
@@ -58,6 +56,7 @@ margin: 10px;
   margin: 10px auto;
   text-align: center;
   margin-bottom: 20px;
+  float: left;
 }
 
 .hidden img {
@@ -192,3 +191,29 @@ button:active {
   /*border: solid 1px #000000;*/
 
 }
+
+@media screen and (max-width: 500px) {
+
+  .gameboard {
+    width: 320px;
+    height: 320px;
+  }
+
+  .card {
+    height: 60px;
+    width: 60px;
+  }
+
+  .card:hover {
+    transform: rotate(-3deg);
+    opacity: .8;
+    cursor: pointer;
+  }
+
+  div img {
+    height: 60px;
+    width:60px;
+    overflow:hidden;
+    border-radius: 10px;
+    cursor: pointer;
+  }

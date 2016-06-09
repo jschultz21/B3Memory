@@ -1,4 +1,7 @@
 
+
+
+
 var deck=[];
 var baseCard="";
 var secondCard;
@@ -15,6 +18,10 @@ for(i = 0; i < 16; i++) {
   $(".gameboard").append('<div class="hidden card"/>');
   var hidden = $(".hidden");
 }
+
+$(document).ready(function() {
+  $(".selectable .buttonSelector:first").click();
+});
 
 //lets user choose a deck before starting
 $(".deckChoice").on("click",function(){
@@ -104,9 +111,10 @@ function revealCard() {
       }
 
       else { //if the second selected card and base card do not match, do these things:
-        alert("no match! try again.");
-        $(this).toggleClass("hidden selected");  //adds the hidden class and removes selected classso the second selected card becomes hidden again
-        $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
+        setTimeout(function(){
+          $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classso the second selected card becomes hidden again
+          $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
+        }, 1000);
       }
       paths=[]; //resets the array
     }
