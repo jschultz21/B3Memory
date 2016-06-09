@@ -1,5 +1,6 @@
-
-
+$(document).ready(function () {
+    $("#bears").click();
+});
 
 
 var deck=[];
@@ -19,9 +20,6 @@ for(i = 0; i < 16; i++) {
   var hidden = $(".hidden");
 }
 
-$(document).ready(function() {
-  $(".selectable .buttonSelector:first").click();
-});
 
 //lets user choose a deck before starting
 $(".deckChoice").on("click",function(){
@@ -71,9 +69,7 @@ function randomCard () {
 // when a hidden div is clicked, check if the board has images, and check if timer is NOT at 0
 hidden.on("click", function(){
   if ((deckChosen==true) && (timing==false)) {
-    startTimer();
-    // gameInProgress=true;
-  }
+    startTimer();  }
   else{
   }
 });
@@ -114,7 +110,7 @@ function revealCard() {
         setTimeout(function(){
           $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classso the second selected card becomes hidden again
           $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
-        }, 600);
+        }, 550);
       }
       paths=[]; //resets the array
     }
@@ -129,16 +125,15 @@ $("#reset").on("click", function(){
   $(".card").append(randomCard); //assigns a random card to each div
   score=0;
   $("h2").html("Total Matches: "+score); //replace the scoreboard with new score
-  // deckChosen=false;
-  // gameInProgress=false;
   timing=false;
+  seconds=0;
   resetTimer();
 });
 
 function doWeHaveaWinner() {
   if (score === 8){
-    alert("U WIN GR8 JB!");
-    gameInProgress=false;
+    alert("#WINNING");
+    timing=false;
     resetTimer();
   }
   else{
@@ -165,3 +160,8 @@ function resetTimer(){
   seconds=0;
   $("#timer").text("0m 0s");
 }
+
+//prevents image drag CHEATERS!!
+$("img").mousedown(function(e){
+  e.preventDefault()
+});
