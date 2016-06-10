@@ -1,7 +1,3 @@
-
-
-
-
 var deck=[];
 var baseCard="";
 var secondCard;
@@ -9,7 +5,7 @@ var paths=[];
 var score=0;
 var seconds=0;
 var minutes=0;
-var x=0;
+var deckValue=0;   //what does x represent? maybe rename?
 var deckChosen=false;
 var timing=false;
 
@@ -23,10 +19,11 @@ $(document).ready(function() {
   $(".selectable .buttonSelector:first").click();
 });
 
+//the function below is long buuuut it seems good. You could split into indivdual functions if wanted.
 //lets user choose a deck before starting
 $(".deckChoice").on("click",function(){
 
-  if (timing==true) {
+  if (timing==true) {    //unsure how timing becomes true at the moment
     alert("game in progress");
   }
   else {
@@ -35,12 +32,12 @@ $(".deckChoice").on("click",function(){
     deckChosen=true;
     if ($(".card:contains('img')")) { //if the board contains images, clear them
       $(".card").children("img").remove(); //removes all images from the .card divs
-      x = $(this).val(); //get value of deck clicked
+      deckValue = $(this).val(); //get value of deck clicked
       generateDeck();
     }
     else { //otherwise, generate the deck
       deckChosen=true;
-      x = $(this).val();
+      deckValue = $(this).val();
       generateDeck();
     }
 
@@ -54,8 +51,8 @@ $(".deckChoice").on("click",function(){
 // //generates the deck with two copies of each image
 function generateDeck() {
   for(var i =1; i < 9; i++) {
-    deck.push("images"+x+"/img"+ i + ".jpg");
-    deck.push("images"+x+"/img"+ i + ".jpg");
+    deck.push("images"+deckValue+"/img"+ i + ".jpg");
+    deck.push("images"+deckValue+"/img"+ i + ".jpg");
   }
 }
 
@@ -69,27 +66,41 @@ function randomCard () {
 };
 
 // when a hidden div is clicked, check if the board has images, and check if timer is NOT at 0
+
+//this section  is handling the click event then passing off to the revealCard function is board selected and timer going
 hidden.on("click", function(){
-  if ((deckChosen==true) && (timing==false)) {
+  if ((deckChosen==true) && (timing==true)) {
+      revealCard();
+  }
+  else if ((deckChosen==true) && (timing==false)) {
     startTimer();
+    timing = true;
+    revealCard();
     // gameInProgress=true;
   }
-  else{
+  else if (deckChosen==false) {
+    alert("please choose a deck!");
+    return;
   }
 });
 
 //when card is clicked, the background image is revealed
-hidden.on("click", revealCard);
 
+//attempted to split to revealcard function into multiple seb-functions, called by the function below depending on the input
 function revealCard() {
-
-  if (deckChosen==false) {
-    alert("please choose a deck!");
-    return;
+  if ($(this).hasClass("hidden")) {   //seems to be an error on this line; images not displaying
+    debugger
+    revealCard2()    // can rename revealcard2 etc as something more semantic
+    console.log("hidden class " +this)
   }
+  else if (baseCard === secondCard) {
+    revealCard3()
+  }
+  else timesATicken()
+  console.log("nope try again")
+}
 
-  if ($(this).hasClass("hidden")){
-
+function revealCard2() {
     $(this).toggleClass("hidden selected"); //removes hidden class and adds selected class so image is revealed
     var path = $('img', this).attr('src'); //sets clicked img src to variable 'path'
     paths.push(path); //pushes path variable into paths array
@@ -97,29 +108,32 @@ function revealCard() {
     baseCard=paths[paths.length-2];
     secondCard=paths[paths.length-1];
 
-    if (typeof(baseCard) === 'undefined') { //if there is no basecard yet, do nothing after first card is selected
-    }
-
-    else { //if the second selected card and the base card match, do these things:
-      if (baseCard === secondCard) {
-        console.log("hooray!");
-        $(this).toggleClass("selected matched");
-        $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("matched selected");
-        score ++ //add one to the score
-        $("h2").html("Total Matches: "+score); //replace the scoreboard with new score
-        doWeHaveaWinner(); //check for winner
-      }
-
-      else { //if the second selected card and base card do not match, do these things:
-        setTimeout(function(){
-          $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classso the second selected card becomes hidden again
-          $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
-        }, 1000);
-      }
-      paths=[]; //resets the array
-    }
+    console.log(baseCard, secondCard)
+    timesATicken()
+    // if (typeof(baseCard) === 'undefined') { //if there is no basecard yet, do nothing after first card is selected
+    // }
   }
+
+//might be able to split this into a separate function
+function revealCard3() {
+  //if the second selected card and the base card match, do these things:
+  console.log("hooray!");
+  $(this).toggleClass("selected matched");
+  $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("matched selected");
+  score ++ //add one to the score
+  $("h2").html("Total Matches: "+score); //replace the scoreboard with new score
+  doWeHaveaWinner(); //check for winner
 }
+
+function timesATicken() {
+//if the second selected card and base card do not match, do these things:
+setTimeout(function(){
+  $('img[src="' + secondCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class and removes selected classs so the second selected card becomes hidden again
+  $('img[src="' + baseCard + '"]').parent(".selected").toggleClass("hidden selected"); //adds the hidden class so the base card becomes hidden again
+  }, 1000);
+  paths=[]; //resets the array
+}
+
 
 $("#reset").on("click", function(){
   $(".card").children("img").remove(); //removes all images from the .card divs
@@ -150,6 +164,7 @@ function startTimer(){
   timer=setInterval(updateTimer, 1000);
 }
 
+//I like the timing function! Must cleaner code than mine.
 function updateTimer() {
   seconds ++;
   if (seconds >=60) {
