@@ -19,12 +19,14 @@ for(i = 0; i < 16; i++) {
   $(".gameboard").append('<div class="hidden card"/>');
   var hidden = $(".hidden");
 }
+// This should also be in $(document).ready . Anything you want to happen when the page first loads should be.
 
 //lets user choose a deck before starting
 $(".deckChoice").on("click",function(){
   if (timing==true){ //if the timer is on, alert user a game is in progress and they can't select a deck
   alert("Game in progress!");
 }
+// Watch your indentation
 else { //switch which deck is selected
   $('button').removeClass('selectedButton');
   $(this).addClass('selectedButton');
@@ -71,6 +73,7 @@ hidden.on("click", function(){
   }
   else{
   }
+  // Can delete this `else`
 });
 
 //when card is clicked, the background image is revealed
@@ -83,7 +86,7 @@ function revealCard() {
   }
 
   if ($(this).hasClass("hidden")&&(canClickCard==true)){
-    
+
     $(this).toggleClass("hidden selected"); //removes hidden class and adds selected class so image is revealed
     var path = $('img', this).attr('src'); //sets clicked img src to variable 'path'
     paths.push(path); //pushes path variable into paths array
@@ -132,6 +135,7 @@ $("#reset").on("click", function(){
 function doWeHaveaWinner() {
   if (score === 8){
     alert("#WINNING");
+    // This section should be its own function so that it can be used in #reset as well
     $(".card").children("img").remove(); //removes all images from the .card divs
     generateDeck(); //generates the deck
     $(".card").addClass("hidden");  //resets all .card divs to hidden
