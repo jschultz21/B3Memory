@@ -6,22 +6,23 @@
   <link rel="stylesheet" href="styles.css">
   <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Raleway:400,300|Patua+One' rel='stylesheet' type='text/css'>
+  <link rel='shortcut icon' href='JSfavicon.ico' type='image/x-icon'/>
 </head>
 <body>
   <h1>CONCENTRATION</h1>
+  <!-- I recommend not having spaces on either side of the `=`. Can confuse browsers. -->
   <div id = "deckChoices">
     Choose a deck to begin the game
     <br>
-    <button class="deckChoice" value=0>bears</button><br><button class="deckChoice" value=1 >beers</button><br><button class="deckChoice" value=2 >beards</button>
-  </div>
-  <div id = "timer">
+    <button id="bears" class="deckChoice" value=0>bears</button><br><button class="deckChoice" value=1 >beers</button><br><button class="deckChoice" value=2 >beards</button>
+    <div id = "timer"></div>
   </div>
   <div id = "score">
     <h2>Total Matches: 0</h2>
   </div>
   <div class ="gameboard"></div>
   <div>
-    <input id="reset" type="button" value="reset" /></input>
+    <input id="reset" type="button" value="reset" />
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="app.js"></script>
