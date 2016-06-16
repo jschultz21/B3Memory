@@ -1,3 +1,4 @@
+"use strict"
 $(document).ready(function () { //automatically selects the bears deck at page load
   $("#bears").click();
 });
@@ -13,6 +14,8 @@ var x=0;
 var deckChosen=false;
 var timing=false;
 var canClickCard =true;
+var i;
+var timer;
 
 //sets up the gameboard with sixteen divs
 for(i = 0; i < 16; i++) {
@@ -60,7 +63,7 @@ function randomCard () {
   var randomNumber = Math.floor(Math.random() * deck.length);
   var url = deck[randomNumber];
   deck.splice(randomNumber,1);
-  imageUrl='<img src="' + url + '" value=randomNumber/>'
+  var imageUrl='<img src="' + url + '" value=randomNumber/>'
   return imageUrl;
 };
 
@@ -83,7 +86,7 @@ function revealCard() {
   }
 
   if ($(this).hasClass("hidden")&&(canClickCard==true)){
-    
+
     $(this).toggleClass("hidden selected"); //removes hidden class and adds selected class so image is revealed
     var path = $('img', this).attr('src'); //sets clicked img src to variable 'path'
     paths.push(path); //pushes path variable into paths array
